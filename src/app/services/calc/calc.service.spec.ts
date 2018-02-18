@@ -1,5 +1,6 @@
-import { CalcService } from './calc.service';
-import { CalcOperators } from '../enums/calc-operators.enum';
+import { CalcService } from "./calc.service";
+import { CalcOperators } from "../../enums/calc-operators.enum";
+
 
 describe('CalcService', () => {
   let service: CalcService;

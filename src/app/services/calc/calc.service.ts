@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CalcOperators } from '../enums/calc-operators.enum';
+import { CalcOperators } from '../../enums/calc-operators.enum';
 
 @Injectable()
 export class CalcService {

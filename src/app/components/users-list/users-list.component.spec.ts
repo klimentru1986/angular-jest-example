@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { UsersApiService } from '../../services/users-api.service';
+import { UsersApiService } from '../../services/users-api/users-api.service';
 import { UsersListComponent } from './users-list.component';
 
 import { of } from 'rxjs/observable/of';

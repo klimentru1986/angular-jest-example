@@ -4,12 +4,13 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { CalcOperators } from '../../enums/calc-operators.enum';
 import { CalcComponent } from './calc.component';
 import { ObjToArrPipe } from '../../pipes/obj-to-arr.pipe';
-import { CalcService } from '../../services/calc.service';
+import { CalcService } from '../../services/calc/calc.service';
+import { FormsService } from '../../services/forms/forms.service';
 
 describe('CalcComponent', () => {
   let comp: CalcComponent;
   let fixture: ComponentFixture<CalcComponent>;
-  let formBuilderStub;
+  let formsServiceStub;
   let calcServiceStub;
 
   @Pipe({ name: 'objToArr' })
@@ -20,8 +21,8 @@ describe('CalcComponent', () => {
   }
 
   beforeEach(() => {
-    formBuilderStub = {
-      group: () => new FormGroup({})
+    formsServiceStub = {
+      calcForm: () => new FormGroup({})
     };
 
     calcServiceStub = {
@@ -32,7 +33,7 @@ describe('CalcComponent', () => {
       declarations: [CalcComponent, PipeMock],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
-        { provide: FormBuilder, useValue: formBuilderStub },
+        { provide: FormsService, useValue: formsServiceStub },
         { provide: CalcService, useValue: calcServiceStub }
       ]
     });
