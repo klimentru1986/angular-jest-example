@@ -3,7 +3,7 @@ import { CalcOperators } from '../enums/calc-operators.enum';
 
 describe('CalcService', () => {
   let service: CalcService;
-  const getMock = (operator: CalcOperators) => {
+  const getExpectedArgs = (operator: CalcOperators) => {
     return {
       firstArg: 20,
       secondArg: 4,
@@ -16,25 +16,25 @@ describe('CalcService', () => {
   });
 
   it('should plus calculate', () => {
-    const mock = getMock(CalcOperators.plus);
+    const mock = getExpectedArgs(CalcOperators.plus);
 
     expect(service.calculate(mock)).toEqual(24);
   });
 
   it('should minus calculate', () => {
-    const mock = getMock(CalcOperators.minus);
+    const mock = getExpectedArgs(CalcOperators.minus);
 
     expect(service.calculate(mock)).toEqual(16);
   });
 
   it('should multiply calculate', () => {
-    const mock = getMock(CalcOperators.multiply);
+    const mock = getExpectedArgs(CalcOperators.multiply);
 
     expect(service.calculate(mock)).toEqual(80);
   });
 
   it('should divide calculate', () => {
-    const mock = getMock(CalcOperators.divide);
+    const mock = getExpectedArgs(CalcOperators.divide);
 
     expect(service.calculate(mock)).toEqual(5);
   });
