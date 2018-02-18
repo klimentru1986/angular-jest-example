@@ -1,0 +1,43 @@
+<html><head><meta charset="utf-8"/><title>Test report</title><style type="text/css">html, body {font-family: Arial, Helvetica, sans-serif;font-size: 1rem;margin: 0;padding: 0;color: #333;}
+body {padding: 1rem;font-size: 0.85rem;}
+#title {margin-top: 0;}
+#timestamp {font-weight: bold;color: #666;margin-bottom: 0.5rem;}
+#summary {color: #999;margin-bottom: 1rem;}
+.suite-info {
+	padding: 1rem;
+	background-color: #eee;
+	border-bottom: 2px solid #999;
+	color: #999;
+	display: flex;
+	align-items: center;
+}
+.suite-info .suite-path {
+	font-weight: bold;
+	word-break: break-all;
+	flex-grow: 1;
+}
+.suite-info .suite-time {
+	margin-left: 0.5rem;
+	padding: 0.2rem 0.3rem;
+	font-size: 0.75rem;
+}
+.suite-info .suite-time.warn {
+	background-color: #D8000C;
+	color: #fff;
+}
+.suite-table {width: 100%;font-size: 0.85rem;margin-bottom: 1em;}
+.suite-table td {padding: 0.5rem;}
+.suite-table tr.passed {background-color: #DFF2BF;color: #4F8A10;}
+.suite-table tr.pending {background-color: #FEEFB3;color: #9F6000;}
+.suite-table tr.failed {background-color: #FFBABA;color: #D8000C;}
+.suite-table td {font-size: 0.85rem;border-bottom: 1px solid #aaa;vertical-align: top;}
+.suite-table td.suite {font-weight: bold;width: 20%;}
+.suite-table td.test {font-style: italic;width: 60%;}
+.suite-table td.test .failureMsg {font-weight: bold;font-size: 0.7rem;}
+.suite-table td.result {width: 20%;text-align: right;}
+</style></head><body><h1 id="title">Test report</h1></body><div id="metadata-container"><div id="timestamp">Start: 2018-02-18 14:07:17</div><div id="summary">
+		15 tests --
+		15 passed /
+		0 failed /
+		0 pending
+	</div></div><div class="suite-info"><div class="suite-path">/home/kliment/Projects/ang-jest/src/app/components/calc/calc.component.spec.ts</div><div class="suite-time">1.632s</div></div><table class="suite-table" cellspacing="0" cellpadding="0"><tr class="passed"><td class="suite">CalcComponent</td><td class="test">can load instance</td><td class="result">passed in 0.171s</td></tr><tr class="passed"><td class="suite">CalcComponent</td><td class="test">calcOperators defaults to: CalcOperators</td><td class="result">passed in 0.052s</td></tr><tr class="passed"><td class="suite">CalcComponent</td><td class="test">should initForm</td><td class="result">passed in 0.043s</td></tr><tr class="passed"><td class="suite">CalcComponent</td><td class="test">should call calculate on submit</td><td class="result">passed in 0.041s</td></tr><tr class="passed"><td class="suite">CalcComponent</td><td class="test">should call calcService on calculate</td><td class="result">passed in 0.039s</td></tr><tr class="passed"><td class="suite">CalcComponent</td><td class="test">should update result</td><td class="result">passed in 0.035s</td></tr><tr class="passed"><td class="suite">CalcComponent</td><td class="test">should render result</td><td class="result">passed in 0.03s</td></tr></table><div class="suite-info"><div class="suite-path">/home/kliment/Projects/ang-jest/src/app/app.component.spec.ts</div><div class="suite-time">0.202s</div></div><table class="suite-table" cellspacing="0" cellpadding="0"><tr class="passed"><td class="suite">AppComponent</td><td class="test">can load instance</td><td class="result">passed in 0.046s</td></tr><tr class="passed"><td class="suite">AppComponent</td><td class="test">title defaults to: app</td><td class="result">passed in 0.027s</td></tr><tr class="passed"><td class="suite">AppComponent</td><td class="test">should render title</td><td class="result">passed in 0.022s</td></tr></table><div class="suite-info"><div class="suite-path">/home/kliment/Projects/ang-jest/src/app/services/calc.service.spec.ts</div><div class="suite-time">0.109s</div></div><table class="suite-table" cellspacing="0" cellpadding="0"><tr class="passed"><td class="suite">CalcService</td><td class="test">should plus calculate</td><td class="result">passed in 0.002s</td></tr><tr class="passed"><td class="suite">CalcService</td><td class="test">should minus calculate</td><td class="result">passed in 0.001s</td></tr><tr class="passed"><td class="suite">CalcService</td><td class="test">should multiply calculate</td><td class="result">passed in 0.001s</td></tr><tr class="passed"><td class="suite">CalcService</td><td class="test">should divide calculate</td><td class="result">passed in 0s</td></tr></table><div class="suite-info"><div class="suite-path">/home/kliment/Projects/ang-jest/src/app/pipes/obj-to-arr.pipe.spec.ts</div><div class="suite-time">0.112s</div></div><table class="suite-table" cellspacing="0" cellpadding="0"><tr class="passed"><td class="suite">ObjToArrPipe</td><td class="test">transforms X to Y</td><td class="result">passed in 0.002s</td></tr></table></html>

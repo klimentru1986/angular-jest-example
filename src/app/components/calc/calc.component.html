@@ -1,0 +1,18 @@
+<form [formGroup]="form"
+  (submit)="calculate($event)">
+  <input type="number"
+    formControlName="firstArg" />
+
+  <select formControlName="operator">
+    <option *ngFor="let operator of calcOperators | objToArr" 
+    [selected]="calcOperators.plus===operator ? 'selected': null" 
+    [value]="operator">{{operator}}</option>
+  </select>
+
+  <input type="number"
+    formControlName="secondArg" />
+
+  <button type="submit"
+    class="submit">расчитать</button>
+</form>
+<div class="result">{{result}}</div>
