@@ -47,7 +47,7 @@ describe('UsersApiService', () => {
         return req.method === 'GET';
       }, `GET users data`)
       .flush(expectedUsers);
-
+      
     expect(actualData).toEqual(expectedUsers);
   });
 });
