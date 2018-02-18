@@ -55,8 +55,8 @@ describe('CalcComponent', () => {
   });
 
   it('should call calculate on submit', () => {
-    const el = fixture.debugElement.nativeElement;
     const spy = jest.spyOn(comp, 'calculate');
+    const el = fixture.debugElement.nativeElement;
     const button = el.querySelector('button.submit');
 
     fixture.detectChanges();
@@ -66,9 +66,9 @@ describe('CalcComponent', () => {
   });
 
   it('should call calcService on calculate', () => {
+    const ev = new Event('submit');
     const calcService = fixture.debugElement.injector.get(CalcService);
     const calcSpy = jest.spyOn(calcService, 'calculate');
-    const ev = new Event('submit');
 
     fixture.detectChanges();
     comp.calculate(ev);
@@ -77,10 +77,10 @@ describe('CalcComponent', () => {
   });
 
   it('should update result', () => {
-    const calcService = fixture.debugElement.injector.get(CalcService);
-    const result = 10;
-    const calcSpy = jest.spyOn(calcService, 'calculate').mockReturnValue(result);
     const ev = new Event('submit');
+    const result = 10;
+    const calcService = fixture.debugElement.injector.get(CalcService);
+    const calcSpy = jest.spyOn(calcService, 'calculate').mockReturnValue(result);
 
     fixture.detectChanges();
     comp.calculate(ev);
@@ -89,11 +89,11 @@ describe('CalcComponent', () => {
   });
 
   it('should render result', () => {
-    const calcService = fixture.debugElement.injector.get(CalcService);
-    const result = 10;
-    const calcSpy = jest.spyOn(calcService, 'calculate').mockReturnValue(result);
     const ev = new Event('submit');
+    const result = 10;
     const resultEl = fixture.debugElement.nativeElement.querySelector('div.result');
+    const calcService = fixture.debugElement.injector.get(CalcService);
+    const calcSpy = jest.spyOn(calcService, 'calculate').mockReturnValue(result);
 
     fixture.detectChanges();
     comp.calculate(ev);

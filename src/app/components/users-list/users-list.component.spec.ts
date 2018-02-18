@@ -42,8 +42,8 @@ describe('UsersListComponent', () => {
   });
 
   it('should render mock users', async () => {
-    const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(UsersApiService);
     const el: HTMLElement = fixture.debugElement.nativeElement.querySelector('table');
+    const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(UsersApiService);
     jest.spyOn(usersApiServiceStub, 'getUsers').mockReturnValue(of(expectedUsers));
 
     fixture.detectChanges();
