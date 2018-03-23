@@ -8,8 +8,16 @@ describe('ObjToArrPipe', () => {
   });
 
   it('transforms X to Y', () => {
-    const value: Object = { Xprop: 'Xval', Yprop: 'Yval' };
+    // Arrange
+    const inputValue: Object = { Xprop: 'Xval', Yprop: 'Yval' };
+    const expectedValue: string[] = ['Xval', 'Yval'];
 
-    expect(pipe.transform(value)).toEqual(['Xval', 'Yval']);
+    // Act
+    const result = pipe.transform(inputValue);
+
+    // Assert
+    expect(result).toEqual(expectedValue);
   });
 });
+
+
