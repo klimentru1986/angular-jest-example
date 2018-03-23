@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsersListComponent renders correctly 1`] = `
+<div
+  id="root3"
+  ng-version="5.2.5"
+>
+  <table>
+    
+  
+    <thead>
+      
+    
+      <tr>
+        
+      
+        <th>
+          Идентификатор
+        </th>
+        
+      
+        <th>
+          Имя
+        </th>
+        
+      
+        <th>
+          Возраст
+        </th>
+        
+    
+      </tr>
+      
+  
+    </thead>
+    
+  
+    <tbody>
+      
+    
+      
+      <tr>
+        
+      
+        <td>
+          5a276e9b174e685a77674d49
+        </td>
+        
+      
+        <td>
+          Pruitt Ramirez
+        </td>
+        
+      
+        <td>
+          38
+        </td>
+        
+    
+      </tr>
+      <tr>
+        
+      
+        <td>
+          5a276e9b6561a2e06f682b9c
+        </td>
+        
+      
+        <td>
+          Tabitha Dickson
+        </td>
+        
+      
+        <td>
+          33
+        </td>
+        
+    
+      </tr>
+      
+  
+    </tbody>
+    
+
+  </table>
+</div>
+`;

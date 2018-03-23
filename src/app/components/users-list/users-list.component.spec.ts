@@ -34,7 +34,9 @@ describe('UsersListComponent', () => {
   });
 
   it('makes expected calls', () => {
-    const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(UsersApiService);
+    const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(
+      UsersApiService
+    );
     spyOn(usersApiServiceStub, 'getUsers');
     fixture.detectChanges();
 
@@ -42,9 +44,15 @@ describe('UsersListComponent', () => {
   });
 
   it('should render mock users', async () => {
-    const el: HTMLElement = fixture.debugElement.nativeElement.querySelector('table');
-    const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(UsersApiService);
-    jest.spyOn(usersApiServiceStub, 'getUsers').mockReturnValue(of(expectedUsers));
+    const el: HTMLElement = fixture.debugElement.nativeElement.querySelector(
+      'table'
+    );
+    const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(
+      UsersApiService
+    );
+    jest
+      .spyOn(usersApiServiceStub, 'getUsers')
+      .mockReturnValue(of(expectedUsers));
 
     fixture.detectChanges();
     const elHtml = el.innerHTML;
@@ -55,5 +63,18 @@ describe('UsersListComponent', () => {
     expect(elHtml).toContain(expectedUsers[1].id);
     expect(elHtml).toContain(expectedUsers[1].name);
     expect(elHtml).toContain(expectedUsers[1].age);
+  });
+
+  it('renders correctly', () => {
+    const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(
+      UsersApiService
+    );
+    jest
+      .spyOn(usersApiServiceStub, 'getUsers')
+      .mockReturnValue(of(expectedUsers));
+
+    fixture.detectChanges();
+    const calc = fixture.nativeElement;
+    expect(calc).toMatchSnapshot();
   });
 });
