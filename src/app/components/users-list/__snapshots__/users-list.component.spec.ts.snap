@@ -94,7 +94,9 @@ exports[`UsersListComponent should renders correctly 1`] = `
   <div>
     
   
-    <app-user-details />
+    <app-user-details
+      ng-reflect-user-info="[object Object]"
+    />
     
 
   </div>

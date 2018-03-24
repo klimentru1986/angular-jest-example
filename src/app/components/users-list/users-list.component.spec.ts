@@ -1,15 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA, Directive, Input } from '@angular/core';
 import { UsersApiService } from '../../services/users-api/users-api.service';
 import { UsersListComponent } from './users-list.component';
 
 import { of } from 'rxjs/observable/of';
 import { User } from '../../models/user.model';
+import { userInfo } from 'os';
+import { By } from '@angular/platform-browser';
 
 describe('UsersListComponent', () => {
   let comp: UsersListComponent;
   let fixture: ComponentFixture<UsersListComponent>;
   let expectedUsers: User[];
+  let usersApiServiceStubInjector: UsersApiService;
+
+  @Directive({
+    selector: 'app-user-details'
+  })
+  class UserDetailsMockComponent {
+    @Input() userInfo;
+  }
 
   beforeEach(() => {
     expectedUsers = [
@@ -17,18 +27,27 @@ describe('UsersListComponent', () => {
       { id: '5a276e9b6561a2e06f682b9c', age: 33, name: 'Tabitha Dickson' }
     ];
 
-    const usersApiServiceStub = {
+    const usersApiServiceStubIInjector = {
       getUsers: () => {}
     };
 
     TestBed.configureTestingModule({
-      declarations: [UsersListComponent],
+      declarations: [UsersListComponent, UserDetailsMockComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [{ provide: UsersApiService, useValue: usersApiServiceStub }]
+      providers: [
+        { provide: UsersApiService, useValue: usersApiServiceStubIInjector }
+      ]
     });
 
     fixture = TestBed.createComponent(UsersListComponent);
     comp = fixture.componentInstance;
+
+    usersApiServiceStubInjector = fixture.debugElement.injector.get(
+      UsersApiService
+    );
+    jest
+      .spyOn(usersApiServiceStubInjector, 'getUsers')
+      .mockReturnValue(of(expectedUsers));
   });
 
   it('can load instance', () => {
@@ -37,17 +56,12 @@ describe('UsersListComponent', () => {
   });
 
   it('should call usersApiService', () => {
-    // Arrange
-    const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(
-      UsersApiService
-    );
-
     // Act
-    spyOn(usersApiServiceStub, 'getUsers');
+    spyOn(usersApiServiceStubInjector, 'getUsers');
     fixture.detectChanges();
 
     // Assert
-    expect(usersApiServiceStub.getUsers).toHaveBeenCalled();
+    expect(usersApiServiceStubInjector.getUsers).toHaveBeenCalled();
   });
 
   it('should render mock users', () => {
@@ -55,14 +69,8 @@ describe('UsersListComponent', () => {
     const el: HTMLElement = fixture.debugElement.nativeElement.querySelector(
       'table'
     );
-    const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(
-      UsersApiService
-    );
 
     // Act
-    jest
-      .spyOn(usersApiServiceStub, 'getUsers')
-      .mockReturnValue(of(expectedUsers));
     fixture.detectChanges();
     const elHtml = el.innerHTML;
 
@@ -76,19 +84,25 @@ describe('UsersListComponent', () => {
   });
 
   it('should renders correctly', () => {
-    // Arrange
-    const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(
-      UsersApiService
-    );
-
     // Act
-    jest
-      .spyOn(usersApiServiceStub, 'getUsers')
-      .mockReturnValue(of(expectedUsers));
     fixture.detectChanges();
     const elHtml = fixture.nativeElement;
 
     // Assert
     expect(elHtml).toMatchSnapshot();
+  });
+
+  it('should input firtst user to user info', () => {
+    // Act
+    fixture.detectChanges();
+    const childDebugElement = fixture.debugElement.query(
+      By.directive(UserDetailsMockComponent)
+    );
+    const mockUserInfoComp = childDebugElement.injector.get(
+      UserDetailsMockComponent
+    ) as UserDetailsMockComponent;
+
+    // Arrange
+    expect(mockUserInfoComp.userInfo).toEqual(expectedUsers[0]);
   });
 });
