@@ -10,9 +10,10 @@ import { CalcService } from './services/calc/calc.service';
 import { UsersApiService } from './services/users-api/users-api.service';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { FormsService } from './services/forms/forms.service';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 @NgModule({
-  declarations: [AppComponent, CalcComponent, ObjToArrPipe, UsersListComponent],
+  declarations: [AppComponent, CalcComponent, ObjToArrPipe, UsersListComponent, UserDetailsComponent],
   imports: [BrowserModule, ReactiveFormsModule, HttpClientModule],
   providers: [CalcService, UsersApiService, FormsService],
   bootstrap: [AppComponent]

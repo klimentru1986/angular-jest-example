@@ -16,19 +16,24 @@ describe('AppComponent', () => {
   });
 
   it('can load instance', () => {
+    // Assert
     expect(comp).toBeTruthy();
   });
 
   it('title defaults to: app', () => {
+    // Assert
     expect(comp.title).toEqual('app');
   });
 
   it('should render title', () => {
+    // Arrange
     const el = fixture.debugElement.nativeElement;
     
+    // Act
     fixture.detectChanges();
     const renderedTitle = el.querySelector('h1.title').textContent;
 
+    // Assert
     expect(renderedTitle).toContain('Welcome to app!');
   });
 });

@@ -14,3 +14,10 @@
     </tr>
   </tbody>
 </table>
+
+<hr/>
+
+<div *ngIf="users$ | async as users">
+  <app-user-details [userInfo]="users[0]"></app-user-details>
+</div>
+

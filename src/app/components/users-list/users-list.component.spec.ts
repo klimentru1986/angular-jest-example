@@ -36,7 +36,7 @@ describe('UsersListComponent', () => {
     expect(comp).toBeTruthy();
   });
 
-  it('makes expected calls', () => {
+  it('should call usersApiService', () => {
     // Arrange
     const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(
       UsersApiService
@@ -75,7 +75,7 @@ describe('UsersListComponent', () => {
     expect(elHtml).toContain(expectedUsers[1].age);
   });
 
-  it('renders correctly', () => {
+  it('should renders correctly', () => {
     // Arrange
     const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(
       UsersApiService
@@ -86,9 +86,9 @@ describe('UsersListComponent', () => {
       .spyOn(usersApiServiceStub, 'getUsers')
       .mockReturnValue(of(expectedUsers));
     fixture.detectChanges();
-    const calc = fixture.nativeElement;
+    const elHtml = fixture.nativeElement;
 
     // Assert
-    expect(calc).toMatchSnapshot();
+    expect(elHtml).toMatchSnapshot();
   });
 });

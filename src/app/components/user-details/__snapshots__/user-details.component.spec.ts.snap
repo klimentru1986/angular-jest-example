@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserDetailsComponent should renders correctly 1`] = `
+<div
+  id="root1"
+  ng-version="5.2.5"
+>
+  
+  <div>
+    
+  
+    <h4>
+      Данные пользователя
+    </h4>
+    
+  
+    <div>
+      Идентификатор: qwe123
+    </div>
+    
+  
+    <div>
+      Имя: Иванов Иван Иванович
+    </div>
+    
+  
+    <div>
+      Возраст: 33
+    </div>
+    
+
+  </div>
+</div>
+`;
