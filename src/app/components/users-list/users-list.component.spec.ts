@@ -102,7 +102,7 @@ describe('UsersListComponent', () => {
       UserDetailsMockComponent
     ) as UserDetailsMockComponent;
 
-    // Arrange
+    // Assert
     expect(mockUserInfoComp.userInfo).toEqual(expectedUsers[0]);
   });
 });
