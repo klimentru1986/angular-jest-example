@@ -7,7 +7,7 @@ describe('ObjToArrPipe', () => {
     pipe = new ObjToArrPipe();
   });
 
-  it('transforms X to Y', () => {
+  it('should transforms X to Y', () => {
     // Arrange
     const inputValue: Object = { Xprop: 'Xval', Yprop: 'Yval' };
     const expectedValue: string[] = ['Xval', 'Yval'];

@@ -34,20 +34,23 @@ describe('UsersApiService', () => {
   );
 
   it('should create an instance successfully', () => {
+    // Assert
     expect(service).toBeDefined();
   });
 
   it('should call the GET api and return the result', () => {
+    // Arrange
     let actualData = null;
 
+    // Act
     service.getUsers().subscribe(data => (actualData = data));
-
     backend
       .expectOne((req: HttpRequest<any>) => {
         return req.method === 'GET';
       }, `GET users data`)
       .flush(expectedUsers);
       
+    // Assert
     expect(actualData).toEqual(expectedUsers);
   });
 });

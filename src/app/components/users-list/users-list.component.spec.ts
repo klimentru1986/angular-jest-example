@@ -20,43 +20,53 @@ describe('UsersListComponent', () => {
     const usersApiServiceStub = {
       getUsers: () => {}
     };
+
     TestBed.configureTestingModule({
       declarations: [UsersListComponent],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [{ provide: UsersApiService, useValue: usersApiServiceStub }]
     });
+
     fixture = TestBed.createComponent(UsersListComponent);
     comp = fixture.componentInstance;
   });
 
   it('can load instance', () => {
+    // Assert
     expect(comp).toBeTruthy();
   });
 
   it('makes expected calls', () => {
+    // Arrange
     const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(
       UsersApiService
     );
+
+    // Act
     spyOn(usersApiServiceStub, 'getUsers');
     fixture.detectChanges();
 
+    // Assert
     expect(usersApiServiceStub.getUsers).toHaveBeenCalled();
   });
 
-  it('should render mock users', async () => {
+  it('should render mock users', () => {
+    // Arrange
     const el: HTMLElement = fixture.debugElement.nativeElement.querySelector(
       'table'
     );
     const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(
       UsersApiService
     );
+
+    // Act
     jest
       .spyOn(usersApiServiceStub, 'getUsers')
       .mockReturnValue(of(expectedUsers));
-
     fixture.detectChanges();
     const elHtml = el.innerHTML;
 
+    // Assert
     expect(elHtml).toContain(expectedUsers[0].id);
     expect(elHtml).toContain(expectedUsers[0].name);
     expect(elHtml).toContain(expectedUsers[0].age);
@@ -66,15 +76,19 @@ describe('UsersListComponent', () => {
   });
 
   it('renders correctly', () => {
+    // Arrange
     const usersApiServiceStub: UsersApiService = fixture.debugElement.injector.get(
       UsersApiService
     );
+
+    // Act
     jest
       .spyOn(usersApiServiceStub, 'getUsers')
       .mockReturnValue(of(expectedUsers));
-
     fixture.detectChanges();
     const calc = fixture.nativeElement;
+
+    // Assert
     expect(calc).toMatchSnapshot();
   });
 });
