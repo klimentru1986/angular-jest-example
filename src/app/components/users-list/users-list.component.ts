@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersApiService } from '../../services/users-api/users-api.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { User } from '../../models/user.model';
+import { UsersApiService } from '../../services/users-api/users-api.service';
 
 @Component({
   selector: 'app-users-list',
