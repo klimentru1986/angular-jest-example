@@ -1,12 +1,10 @@
+import { Directive, Input, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA, Directive, Input } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
+import { User } from '../../models/user.model';
 import { UsersApiService } from '../../services/users-api/users-api.service';
 import { UsersListComponent } from './users-list.component';
-
-import { of } from 'rxjs/observable/of';
-import { User } from '../../models/user.model';
-import { userInfo } from 'os';
-import { By } from '@angular/platform-browser';
 
 describe('UsersListComponent', () => {
   let comp: UsersListComponent;
@@ -34,20 +32,14 @@ describe('UsersListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [UsersListComponent, UserDetailsMockComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [
-        { provide: UsersApiService, useValue: usersApiServiceStubIInjector }
-      ]
+      providers: [{ provide: UsersApiService, useValue: usersApiServiceStubIInjector }]
     });
 
     fixture = TestBed.createComponent(UsersListComponent);
     comp = fixture.componentInstance;
 
-    usersApiServiceStubInjector = fixture.debugElement.injector.get(
-      UsersApiService
-    );
-    jest
-      .spyOn(usersApiServiceStubInjector, 'getUsers')
-      .mockReturnValue(of(expectedUsers));
+    usersApiServiceStubInjector = fixture.debugElement.injector.get(UsersApiService);
+    jest.spyOn(usersApiServiceStubInjector, 'getUsers').mockReturnValue(of(expectedUsers));
   });
 
   it('can load instance', () => {
@@ -66,9 +58,7 @@ describe('UsersListComponent', () => {
 
   it('should render mock users', () => {
     // Arrange
-    const el: HTMLElement = fixture.debugElement.nativeElement.querySelector(
-      'table'
-    );
+    const el: HTMLElement = fixture.debugElement.nativeElement.querySelector('table');
 
     // Act
     fixture.detectChanges();
@@ -95,12 +85,8 @@ describe('UsersListComponent', () => {
   it('should input firtst user to user info', () => {
     // Act
     fixture.detectChanges();
-    const childDebugElement = fixture.debugElement.query(
-      By.directive(UserDetailsMockComponent)
-    );
-    const mockUserInfoComp = childDebugElement.injector.get(
-      UserDetailsMockComponent
-    ) as UserDetailsMockComponent;
+    const childDebugElement = fixture.debugElement.query(By.directive(UserDetailsMockComponent));
+    const mockUserInfoComp = childDebugElement.injector.get(UserDetailsMockComponent) as UserDetailsMockComponent;
 
     // Assert
     expect(mockUserInfoComp.userInfo).toEqual(expectedUsers[0]);
